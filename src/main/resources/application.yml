@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: "beer-house"
+  datasource:
+    schema: classpath*:db/h2/schema.sql
+    data: classpath*:db/h2/data.sql
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+management:
+  endpoint:
+    health:
+      show-details: always
