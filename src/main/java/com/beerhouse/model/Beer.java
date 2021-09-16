@@ -8,6 +8,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "beer")
 public class Beer extends BaseEntity {
@@ -36,51 +39,5 @@ public class Beer extends BaseEntity {
 	@Column(name = "category")
 	@NotEmpty
 	private String category;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getIngredients() {
-		return ingredients;
-	}
-
-	public void setIngredients(String ingredients) {
-		this.ingredients = ingredients;
-	}
-
-	public String getAlcoholContent() {
-		return alcoholContent;
-	}
-
-	public void setAlcoholContent(String alcoholContent) {
-		this.alcoholContent = alcoholContent;
-	}
-
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	@Override
-	public String toString() {
-		return "Beer [name=" + name + ", ingredients=" + ingredients + ", alcoholContent=" + alcoholContent + ", price="
-				+ price + ", category=" + category + "]";
-	}
 	
 }
