@@ -48,6 +48,7 @@ A configuração default usa uma base de dados in-memory (H2) que é populada co
 ### Pré-requisito
 Os sequintes itens devem estar instalados em seu sistema:
 * Java 8
+* Lombok (https://projectlombok.org/setup/eclipse)
 * git (https://help.github.com/articles/set-up-git)
 * Sua IDE preferida
   * Eclipse com m2e plugin. https://www.eclipse.org/m2e/
