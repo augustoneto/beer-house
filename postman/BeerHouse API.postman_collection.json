@@ -148,7 +148,7 @@
 			"response": []
 		},
 		{
-			"name": "Health",
+			"name": "actuator/health",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -160,6 +160,78 @@
 					"path": [
 						"actuator",
 						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actuator/env",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/actuator/env",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"actuator",
+						"env"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actuator/metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/actuator/metrics",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"actuator",
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actuator/heapdump",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/actuator/heapdump",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"actuator",
+						"heapdump"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actuator/threaddump",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/actuator/threaddump",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"actuator",
+						"threaddump"
 					]
 				}
 			},
