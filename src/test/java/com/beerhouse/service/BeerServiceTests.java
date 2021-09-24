@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,14 +74,14 @@ public class BeerServiceTests {
 	
 	@Test
 	void shouldUpdatePartialBeer() {
-		Beer beer = new Beer();
-		beer.setName("Beer Test");
+		Map<String, String> beerMap = new HashMap<>();
+		beerMap.put("name", "Beer Test");
 
-		beerService.updatePartial(BEER_ID, beer);
+		beerService.updatePartial(BEER_ID, beerMap);
 
 		Beer beerUpdate = beerService.findById(BEER_ID);
 		
-		assertThat(beerUpdate.getName()).isEqualTo(beer.getName());
+		assertThat(beerUpdate.getName()).isEqualTo(beerMap.get("name"));
 	}
 	
 	@Test

@@ -65,8 +65,8 @@ public class BeerController {
 	}
 
 	@PatchMapping(value = "/beers/{id}")
-	public ResponseEntity<Void> updatePartial(@PathVariable Integer id, @RequestBody Beer newBeer) {
-		beerService.updatePartial(id, newBeer);
+	public ResponseEntity<Void> updatePartial(@PathVariable Integer id, @RequestBody Map<String, String> newBeerMap) {
+		beerService.updatePartial(id, newBeerMap);
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

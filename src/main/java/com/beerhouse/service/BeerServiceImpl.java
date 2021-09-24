@@ -1,6 +1,8 @@
 package com.beerhouse.service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,21 +47,26 @@ public class BeerServiceImpl implements BeerService {
 	}
 	
 	@Override
-	public Beer updatePartial(Integer id, Beer newBeer) {
-		return beerRepository.findById(id) 
-				.map(beer -> {
-					if (newBeer.getName() != null && !newBeer.getName().isEmpty())
-						beer.setName(newBeer.getName());
-					if (newBeer.getIngredients() != null && !newBeer.getIngredients().isEmpty())
-						beer.setIngredients(newBeer.getIngredients());
-					if (newBeer.getAlcoholContent() != null && !newBeer.getAlcoholContent().isEmpty())
-						beer.setAlcoholContent(newBeer.getAlcoholContent());
-					if (newBeer.getCategory() != null && !newBeer.getCategory().isEmpty()) 
-						beer.setCategory(newBeer.getCategory());
-					if (newBeer.getPrice() != null)
-						beer.setPrice(newBeer.getPrice());
-					return save(beer);
-				}).orElseThrow(() -> new BeerNotFoundException(id));
+	public Beer updatePartial(Integer id, Map<String, String> beerMap) {
+		Beer beer = findById(id);
+		
+		beerMap.forEach((key, value) -> setFieldsUpdatePartial(key, value, beer));
+		
+		return save(beer);
+	}
+	
+	private void setFieldsUpdatePartial(String key, String value, Beer beer) {
+		if (key.equals("name")) {
+        	beer.setName(value);
+        } else if (key.equals("ingredients")) {
+        	beer.setIngredients(value);
+        } else if (key.equals("alcohol_content")) {
+        	beer.setAlcoholContent(value);
+        } else if (key.equals("price")) {
+        	beer.setPrice(new BigDecimal(value));
+        } else if (key.equals("category")) {
+        	beer.setCategory(value);
+        }
 	}
 
 	@Override
